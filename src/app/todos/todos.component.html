@@ -5,7 +5,7 @@
 
 </section>
 
-<div class="container">
+<div class="container add-todo-box-container">
 
     <div class="add-todo-box">
 
@@ -41,25 +41,15 @@
 
         <div class="todos-list">
 
-            <div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed">
-                <div class="check-box">
-                    <i class="material-icons">check</i>
-                </div>
+        <app-todo-item 
+        
+            *ngFor="let todo of todos" 
+            [todo]="todo" 
+            (todoClicked)="toggleCompleted(todo)"
+            (editClicked)="editTodo(todo)"
+            (deleteClicked)="deleteTodo(todo)"
             
-                <div class="todo-text">
-                    {{ todo.text }}
-                </div>
-            
-                <div class="todo-controls-box">
-                    <div class="todo-control-button">
-                        <i class="material-icons">edit</i>
-                    </div>
-            
-                    <div class="todo-control-button is-danger">
-                        <i class="material-icons">delete</i>
-                    </div>
-                </div>
-            </div>
+        ></app-todo-item>
 
         </div>
     </div>
