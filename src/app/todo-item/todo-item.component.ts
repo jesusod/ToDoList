@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../shared/todo.model';
 
+
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
@@ -13,10 +14,14 @@ export class TodoItemComponent implements OnInit {
   @Output() editClicked: EventEmitter <void> =new EventEmitter
   @Output() deleteClicked: EventEmitter <void> =new EventEmitter
 
+  test: string = 'Default Value';
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.test = 'New Value'
+    }, 2500)
   }
 
   onTodoClicked(){
@@ -29,7 +34,7 @@ export class TodoItemComponent implements OnInit {
       this.editClicked.emit()
   }
 
-onDeleteClicked(){
+  onDeleteClicked(){
 
   this.deleteClicked.emit()
 
